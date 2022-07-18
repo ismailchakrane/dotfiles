@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -61,36 +62,41 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             		XK_c,      killclient,     {0} },
+	{ MODKEY,             		XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_agrave, view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_agrave, tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_ampersand,                   0)
-	TAGKEYS(                        XK_eacute,                   	1)
-	TAGKEYS(                        XK_quotedbl,                   	2)
-	TAGKEYS(                        XK_apostrophe,                  3)
-	TAGKEYS(                        XK_parenleft,                  	4)
+	TAGKEYS(                        XK_ampersand,               0)
+	TAGKEYS(                        XK_eacute,                  1)
+	TAGKEYS(                        XK_quotedbl,                2)
+	TAGKEYS(                        XK_apostrophe,              3)
+	TAGKEYS(                        XK_parenleft,               4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,             		XK_x,      spawn,         SHCMD("~/scripts/test.sh") },
+	{ ControlMask,             	XK_F9,     spawn,         SHCMD("amixer set Master 5dB-") },
+	{ ControlMask,             	XK_F10,    spawn,         SHCMD("amixer set Master 5db+") },
+	{ ControlMask,             	XK_F11,    spawn,         SHCMD("amixer set Master toggle") },
+	{ MODKEY,             		XK_x,      spawn,         SHCMD("~/scripts/exit.sh") },
+	{ MODKEY,             		XK_w,      spawn,         SHCMD("brave-browser-stable") },
+	{ MODKEY,             		XK_f,      spawn,         SHCMD("st -e nnn -Dd") },
 
 };
 
